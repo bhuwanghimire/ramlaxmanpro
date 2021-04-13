@@ -4,37 +4,47 @@
     <!-- general form elements -->
     <div class="card card-primary">
       <div class="card-header">
-        <h3 class="card-title">Quick Example</h3>
+        <h3 class="card-title">About Us</h3>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form method="POST" action="{{ route('slider.update',$sliders->id) }}" enctype="multipart/form-data">
+      <form method="POST" action="{{ route('about.store') }}" enctype="multipart/form-data">
           @csrf
-          @method('PUT')
         <div class="card-body">
+             
+               
           <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
-            <input type="text" class="form-control" name="title" id="" value="{{$sliders->title}}">
+            <input type="text" class="form-control" name="title" id="" placeholder="Enter title">
+            @error('title')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
           </div>
 
           <div class="form-group">
             <label for="">Content</label>
             <textarea id="summernote" class="form-control" rows="5" cols="100" name="description">
-                {{$sliders->description}}
+             
               </textarea>
+              @error('description')
+              <p class="text-danger">{{ $message }}</p>
+              @enderror
           </div>
         
           <div class="form-group">
-            <label for="exampleInputFile">Slider Image</label>
+            <label for="exampleInputFile"> Image</label>
             <div class="input-group">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="" name="slider_image">
+                <input type="file" class="custom-file-input" id="" name="image">
                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
               </div>
+             
               <div class="input-group-append">
               
               </div>
-            </div>
+            </div> @error('slider_image')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
           </div>
        
         </div>

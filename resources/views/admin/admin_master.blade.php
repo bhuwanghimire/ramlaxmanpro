@@ -122,6 +122,7 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    @include('sweetalert::alert')
 
     <!-- Main content -->
    @yield('content')

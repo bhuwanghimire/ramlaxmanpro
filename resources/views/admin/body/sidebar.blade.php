@@ -50,6 +50,17 @@
             </a>
            
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('about.index')}} " class="nav-link {{Request::is('*about*') ? 'active': ''}}">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                About
+              
+              </p>
+            </a>
+           
+          </li>
        
         
           

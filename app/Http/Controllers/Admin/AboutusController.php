@@ -6,12 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Image;
 use Illuminate\Support\Carbon;
-use App\Models\Slider;
+use App\Models\Aboutus;
 Use Alert;
 
-
-
-class SliderController extends Controller
+class AboutusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +18,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-       
-
-        $sliders = Slider::all();
-        return view('admin.slider.index',compact('sliders'));
+        $abouts = Aboutus::all();
+        return view('admin.aboutus.index',compact('abouts'));
     }
 
     /**
@@ -33,7 +29,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('admin.slider.create');
+        return view('admin.aboutus.create');
     }
 
     /**
@@ -47,24 +43,23 @@ class SliderController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'slider_image' => 'required',
+            'image' => 'required',
         ]);
 
-        $slider_image =  $request->file('slider_image');
-        $name_gen = hexdec(uniqid()).'.'.$slider_image->getClientOriginalExtension();
-         Image::make($slider_image)->resize(1920,1088)->save('image/slider/'.$name_gen);
-        $last_img = 'image/slider/'.$name_gen;
+        $image =  $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+         Image::make($image)->resize(1920,1088)->save('image/aboutus/'.$name_gen);
+        $last_img = 'image/aboutus/'.$name_gen;
 
         
-        Slider::insert([
+        Aboutus::insert([
             'title' => $request->title,
             'description' => $request->description,
-            'slider_image' => $last_img,
+            'image' => $last_img,
             'created_at' => Carbon::now()
         ]);
-        
-        return redirect()->route('slider.index');
-
+        toast('Aboutus Inserted Successfully','success');
+        return redirect()->route('about.index');
     }
 
     /**
@@ -86,9 +81,8 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-      
-         $sliders = Slider::find($id);
-        return view('admin.slider.edit',compact('sliders'));
+        $abouts = Aboutus::find($id);
+        return view('admin.aboutus.edit',compact('abouts'));
     }
 
     /**
@@ -100,24 +94,24 @@ class SliderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $slider = Slider::find($id);
-        $slider_image =  $request->file('slider_image');
-        if ( $slider_image) {
-            $name_gen = hexdec(uniqid()).'.'.$slider_image->getClientOriginalExtension();
-            Image::make($slider_image)->resize(1920,1088)->save('image/slider/'.$name_gen);
-            $last_img = 'image/slider/'.$name_gen;
-            $slider->slider_image =  $last_img;
-            $slider->save();
+        $about = Aboutus::find($id);
+        $image =  $request->file('image');
+        if ( $image) {
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(1920,1088)->save('image/aboutus/'.$name_gen);
+            $last_img = 'image/aboutus/'.$name_gen;
+            $about->image =  $last_img;
+            $about->save();
         }
         
-        $slider->title = $request->title;
-        $slider->description = $request->description ;
+        $about->title = $request->title;
+        $about->description = $request->description ;
         
-       $slider->save();
-       toast('Slider Updated Successfully','success');
+       $about->save();
+       toast('Aboutus Updated Successfully','success');
 
 
-        return redirect()->route('slider.index');
+        return redirect()->route('about.index');
     }
 
     /**
@@ -129,9 +123,9 @@ class SliderController extends Controller
     public function destroy($id)
     {
         
-        $slider = Slider::find($id);
-        $slider->delete();
-        toast('Slider Deleted Successfully','warning');
+        $about = Aboutus::find($id);
+        $about->delete();
+        toast('Deleted Successfully','warning');
         return redirect()->back();
     }
 }
