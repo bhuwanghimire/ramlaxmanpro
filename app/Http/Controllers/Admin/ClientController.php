@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Image;
 use Illuminate\Support\Carbon;
-use App\Models\Service;
+use App\Models\Client;
 Use Alert;
+use Image;
 
-class ServiceController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
-        return view('admin.service.index',compact('services'));
+        $clients = Client::all();
+        return view('admin.client.index',compact('clients'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.service.create');
+        return view('admin.client.create');
     }
 
     /**
@@ -40,22 +40,26 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+       
         $validated = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'icon' => 'required',
+           
+            'logo' => 'required',
         ]);
+          
+        $client_logo =  $request->file('logo');
+        $name_gen = hexdec(uniqid()).'.'.$client_logo->getClientOriginalExtension();
+         Image::make($client_logo)->resize(1920,1088)->save('image/clientlogo/'.$name_gen);
+        $last_img = 'image/clientlogo/'.$name_gen;
 
         
-        Service::insert([
-            'icon' => $request->icon,
-            'title' => $request->title,
-            'description' => $request->description,
-       
+        Client::insert([
+            'client_logo' => $last_img,
+            'client_link' => $request->client_link,
             'created_at' => Carbon::now()
+
         ]);
-        toast('Service Inserted Successfully','success');
-        return redirect()->route('service.index');
+        toast(' Inserted Successfully','success');
+        return redirect()->route('client.index');
     }
 
     /**
@@ -77,8 +81,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::find($id);
-        return view('admin.service.edit',compact('service'));
+        $client = Client::find($id);
+        return view('admin.client.edit',compact('client'));
     }
 
     /**
@@ -90,16 +94,24 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service = Service::find($id);
-      
-        $service->icon = $request->icon;
-        $service->title = $request->title;
-        $service->description = $request->description;
-        $service->save();
-            
-    
-        toast('Service Updated Successfully','success');
-        return redirect()->route('service.index');
+        $client = Client::find($id);
+        $client_image =  $request->file('logo');
+        if ( $client_image) {
+            $name_gen = hexdec(uniqid()).'.'.$client_image->getClientOriginalExtension();
+            Image::make($client_image)->resize(1920,1088)->save('image/clientlogo/'.$name_gen);
+            $last_img = 'image/clientlogo/'.$name_gen;
+            $client->client_logo =  $last_img;
+            $client->save();
+        }
+        
+        $client->client_link   = $request->client_link;
+     
+        
+       $client->save();
+       toast(' Updated Successfully','success');
+
+
+        return redirect()->route('client.index');
     }
 
     /**
@@ -110,8 +122,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id);
-        $service->delete();
+        $client = Client::find($id);
+        $client->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();
     }

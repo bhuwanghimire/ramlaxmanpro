@@ -4,7 +4,7 @@
 <div class="card">
    
    <br>
-    <p style="margin-left:25px;"> <a href="{{route('slider.create')}}" class="btn  bg-gradient-primary btn-flat mr-auto">Create Slider</a></p>
+    <p style="margin-left:25px;"> <a href="{{route('portfolio.create')}}" class="btn  bg-gradient-primary btn-flat mr-auto">Create Slider</a></p>
     @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}
@@ -16,8 +16,7 @@
         <thead>
         <tr>
           <th>Id</th>
-          <th>Title</th>
-          <th>Description</th>
+          <th>Category</th>        
           <th>Slider image</th>
           <th>Action</th>
          
@@ -27,15 +26,15 @@
             
        
         <tbody>
-            @foreach ($sliders as $slider)
+            @foreach ($portfolios as $portfolio)
         <tr>
-          <td>{{$slider->id}}</td>
-          <td>{{$slider->title}}</td>
-          <td>{!! $slider->description !!}</td>
+          <td>{{$portfolio->id}}</td>
+          <td>{{$portfolio->category->category}}</td>
+       
          
-          <td> <img src="{{ asset($slider->slider_image) }}" style="height:40px; width:70px;" > </td>
-       <td style="padding-left:12px;">  <a href="{{route('slider.edit',$slider->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
-       <form action="{{ route('slider.destroy', $slider->id) }}" method="post">
+          <td> <img src="{{ asset($portfolio->image) }}" style="height:40px; width:70px;" > </td>
+       <td style="padding-left:12px;">  <a href="{{route('portfolio.edit',$portfolio->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
+       <form action="{{ route('portfolio.destroy', $portfolio->id) }}" method="post">
         @csrf
       @method('delete')
         <button type="submit" class="text-danger"><i class="fas fa-trash"></i></button>

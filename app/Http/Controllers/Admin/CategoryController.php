@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Image;
 use Illuminate\Support\Carbon;
-use App\Models\Service;
+use App\Models\Category;
 Use Alert;
 
-class ServiceController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
-        return view('admin.service.index',compact('services'));
+        $categories = Category::all();
+        return view('admin.category.index',compact('categories'));
     }
 
     /**
@@ -29,7 +28,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('admin.service.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -41,21 +40,16 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'icon' => 'required',
+            'category' => 'required',
         ]);
 
         
-        Service::insert([
-            'icon' => $request->icon,
-            'title' => $request->title,
-            'description' => $request->description,
-       
+        Category::insert([
+            'category' => $request->category,   
             'created_at' => Carbon::now()
         ]);
-        toast('Service Inserted Successfully','success');
-        return redirect()->route('service.index');
+        toast(' Inserted Successfully','success');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -77,8 +71,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::find($id);
-        return view('admin.service.edit',compact('service'));
+        $category = Category::find($id);
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -90,16 +84,15 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service = Service::find($id);
+        $category = Category::find($id);
       
-        $service->icon = $request->icon;
-        $service->title = $request->title;
-        $service->description = $request->description;
-        $service->save();
+        $category->category = $request->category;
+       
+        $category->save();
             
     
         toast('Service Updated Successfully','success');
-        return redirect()->route('service.index');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -110,8 +103,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id);
-        $service->delete();
+        $category = Category::find($id);
+        $category->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();
     }

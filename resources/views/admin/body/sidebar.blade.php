@@ -61,9 +61,61 @@
             </a>
            
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('service.index')}} " class="nav-link {{Request::is('*service*') ? 'active': ''}}">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Service
+              
+              </p>
+            </a>
+           
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('category.index')}} " class="nav-link {{Request::is('*category*') ? 'active': ''}}">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Category
+              
+              </p>
+            </a>
+           
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('portfolio.index')}} " class="nav-link {{Request::is('*portfolio*') ? 'active': ''}}">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Portfolio
+              
+              </p>
+            </a>
+           
+          </li>
        
-        
-          
+          <li class="nav-item">
+            <a href="{{route('profile.index')}} " class="nav-link {{Request::is('*profile*') ? 'active': ''}}">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Profile
+              
+              </p>
+            </a>
+           
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('client.index')}} " class="nav-link {{Request::is('*client*') ? 'active': ''}}">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Clients
+              
+              </p>
+            </a>
+           
+          </li>
        
         </ul>
       </nav>
