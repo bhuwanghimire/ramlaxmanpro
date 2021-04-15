@@ -11,6 +11,40 @@
       <form method="POST" action="{{ route('portfolio.update',$portfolio->id) }}" enctype="multipart/form-data">
           @csrf
           @method('PUT')
+          <div class="card-body">
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Enter Project Name</label>
+              <input type="text" class="form-control" name="project_name" id="" value="{{$portfolio->project_name}}">
+              
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleInputEmail1">Enter Company  Name</label>
+              <input type="text" class="form-control" name="company_name" id="" value="{{$portfolio->company_name}}">
+              
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleInputEmail1">Enter Projct Date</label>
+              <input type="date" class="form-control" name="date" id=""  value="{{$portfolio->date}}">
+              
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleInputEmail1">Enter Projct Link</label>
+              <input type="text" class="form-control" name="link" id="" value="{{$portfolio->link}}">
+              
+            </div>
+
+            <div class="form-group">
+              <label for="">Description</label>
+              <textarea id="summernote" class="form-control" rows="5" cols="100" name="description">
+               {!!$portfolio->description!!}
+                </textarea>
+              
+            </div>
+            <label for="">Select Portfolio Category</label>
           <select class="custom-select custom-select-lg mb-3" name="category_id">
             <option value="">Open this select menu</option>
             @foreach ($categories as $category)

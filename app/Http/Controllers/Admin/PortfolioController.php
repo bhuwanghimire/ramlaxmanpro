@@ -56,6 +56,11 @@ class PortfolioController extends Controller
         
         Portfolio::insert([
             'category_id' => $request->categoryid,
+            'project_name' => $request->project_name,
+            'company_name' => $request->company_name,
+            'description' => $request->description,
+            'date' => $request->date,
+            'link' => $request->link,
             'image' => $last_img,
             'created_at' => Carbon::now()
         ]);
@@ -106,8 +111,12 @@ class PortfolioController extends Controller
             $portfolios->save();
         }
         
-        $portfolios->category_id   = $request->category_id;
-     
+        $portfolios->category_id = $request->category_id;
+        $portfolios->project_name = $request->project_name;
+        $portfolios->description = $request->description;
+        $portfolios->company_name = $request->company_name;
+        $portfolios->date = $request->date;
+        $portfolios->link = $request->link;
         
        $portfolios->save();
        toast(' Updated Successfully','success');

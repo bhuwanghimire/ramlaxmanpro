@@ -11,9 +11,41 @@
       <form method="POST" action="{{ route('portfolio.store') }}" enctype="multipart/form-data">
           @csrf
         <div class="card-body">
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Enter Project Name</label>
+            <input type="text" class="form-control" name="project_name" id="" placeholder="Enter Project Name">
+            
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Enter Company  Name</label>
+            <input type="text" class="form-control" name="company_name" id="" placeholder="Enter Company  Name">
+            
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Enter Projct Date</label>
+            <input type="date" class="form-control" name="date" id="" placeholder="Enter Projct Date">
+            
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Enter Projct Link</label>
+            <input type="text" class="form-control" name="link" id="" placeholder="Enter Projct Link">
+            
+          </div>
+
+          <div class="form-group">
+            <label for="">Project Description</label>
+            <textarea id="summernote" class="form-control" rows="5" cols="100" name="description">
              
-         
+              </textarea>
+             
+          </div>
+          <label for="">Select Portfolio Category</label>
           <select class="custom-select custom-select-lg mb-3" name="categoryid">
+           
             <option selected>Open this select menu</option>
             @foreach ($categories as $category)
             <option value="{{$category->id}}">{{$category->category}}</option>

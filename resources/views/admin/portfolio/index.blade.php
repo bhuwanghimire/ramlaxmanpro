@@ -17,7 +17,12 @@
         <tr>
           <th>Id</th>
           <th>Category</th>        
-          <th>Slider image</th>
+          <th>Project Name</th>
+          <th>Company Name</th> 
+          <th>Date</th>
+          <th>Link</th>
+          <th>Description</th>
+          <th>Portfolio image</th>
           <th>Action</th>
          
         </tr>
@@ -29,8 +34,18 @@
             @foreach ($portfolios as $portfolio)
         <tr>
           <td>{{$portfolio->id}}</td>
-          <td>{{$portfolio->category->category}}</td>
+          <td>
+            @if($categories->count() > 0)
+            <p class=""> {{$portfolio->category->category??'No Category'}}</p>
        
+        @endif
+           </td>
+          
+           <td>{{$portfolio->project_name}}</td>
+           <td>{{$portfolio->company_name}}</td>
+           <td>{{$portfolio->date}}</td>
+           <td>{{$portfolio->link}}</td>
+           <td>{!!$portfolio->description!!}</td>
          
           <td> <img src="{{ asset($portfolio->image) }}" style="height:40px; width:70px;" > </td>
        <td style="padding-left:12px;">  <a href="{{route('portfolio.edit',$portfolio->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
