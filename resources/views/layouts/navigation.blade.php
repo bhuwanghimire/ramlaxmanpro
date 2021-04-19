@@ -1,24 +1,25 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
-      <h1 class="logo mr-auto"><a href="index.html"><span>Com</span>pany</a></h1>
+      @foreach ($profiles as $profile)
+      <h1 class="logo mr-auto"><a href="{{asset('/')}}"><img src="{{asset($profile->logo)}}" alt="" srcset=""></a></h1>
+      @endforeach
+     
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="{{asset('/')}}">Home</a></li>
-
+          
           <li class="drop-down"><a href="">About</a>
             <ul>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="team.html">Team</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>           
+              <li><a href="{{asset('aboutus_details')}}">About Us</a></li>
+              <li><a href="{{asset('team_details')}}">Team</a></li>
+              <li><a href="{{asset('testimonials')}}">Testimonials</a></li>           
             </ul>
           </li>
 
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+      
           <li><a href="{{asset('contact')}}">Contact</a></li>
 
         </ul>

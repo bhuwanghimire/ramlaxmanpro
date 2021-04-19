@@ -124,6 +124,8 @@ class AboutusController extends Controller
     {
         
         $about = Aboutus::find($id);
+     
+
         $about->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();

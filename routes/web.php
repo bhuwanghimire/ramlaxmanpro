@@ -51,3 +51,21 @@ Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store']
 //portfolio details
 
 Route::get('/portfolio-details/{id} ', [App\Http\Controllers\FrontendController::class, 'portfolio_details'])->name('portfolio_details');
+
+
+// aboutus details
+
+Route::get('/aboutus_details', function () {
+    return view('layouts.include.aboutus_details');
+});
+
+//team details
+Route::get('/team_details', function () {
+    return view('layouts.include.team_details');
+});
+
+
+//team details
+Route::get('/testimonials', function () {
+    return view('layouts.include.testimonials');
+});

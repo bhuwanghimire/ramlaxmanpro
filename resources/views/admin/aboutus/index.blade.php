@@ -4,7 +4,7 @@
 <div class="card">
    
    <br>
-    <p style="margin-left:25px;"> <a href="{{route('about.create')}}" class="btn  bg-gradient-primary btn-flat mr-auto">Create Slider</a></p>
+    <p style="margin-left:25px;"> <a href="{{route('about.create')}}" class="btn  bg-gradient-primary btn-flat mr-auto">Create Aboutus</a></p>
     {{-- @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}

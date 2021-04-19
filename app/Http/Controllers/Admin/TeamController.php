@@ -94,7 +94,7 @@ class TeamController extends Controller
         $teams =  $request->file('image');
         if ( $teams) {
             $name_gen = hexdec(uniqid()).'.'.$teams->getClientOriginalExtension();
-            Image::make($teams)->resize(1920,1088)->save('image/team/'.$name_gen);
+            Image::make($teams)->resize(255,255)->save('image/team/'.$name_gen);
             $last_img = 'image/team/'.$name_gen;
             $team->image =  $last_img;
             $team->save();
