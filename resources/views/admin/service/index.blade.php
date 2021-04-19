@@ -18,7 +18,7 @@
           <th>Id</th>
           <th>Title</th>
           <th>Description</th>
-          <th>Icon </th>
+          <th>Image Icon  </th>
           <th>Action</th>
          
         </tr>
@@ -33,7 +33,7 @@
           <td>{{$service->title}}</td>
           <td>{{$service->description}}</td>
          
-          <td> <i class="{{$service->icon}}"></i> </td>
+          <td> <img src="{{ asset($service->icon) }}" style="height:40px; width:70px;" > </td>
        <td style="padding-left:12px;">  <a href="{{route('service.edit',$service->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
        <form action="{{ route('service.destroy', $service->id) }}" method="post">
         @csrf

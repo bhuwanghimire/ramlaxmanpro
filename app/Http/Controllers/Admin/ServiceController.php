@@ -40,18 +40,25 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+      
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'icon' => 'required',
         ]);
+            
+        $icons =  $request->file('icon');
+        $name_gen = hexdec(uniqid()).'.'.$icons->getClientOriginalExtension();
+        Image::make($icons)->resize(1920,1088)->save('image/servicelogo/'.$name_gen);
+        $last_img = 'image/servicelogo/'.$name_gen;
 
         
+        
         Service::insert([
-            'icon' => $request->icon,
+            'icon' => $last_img,
             'title' => $request->title,
             'description' => $request->description,
-       
+            
             'created_at' => Carbon::now()
         ]);
         toast('Service Inserted Successfully','success');
@@ -91,8 +98,16 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::find($id);
-      
-        $service->icon = $request->icon;
+
+        $services =  $request->file('icon');
+        if ( $services) {
+            $name_gen = hexdec(uniqid()).'.'.$services->getClientOriginalExtension();
+            Image::make($services)->resize(1920,1088)->save('image/servicelogo/'.$name_gen);
+             $last_img = 'image/servicelogo/'.$name_gen;
+            $service->icon =  $last_img;
+            $service->save();
+        }
+       
         $service->title = $request->title;
         $service->description = $request->description;
         $service->save();

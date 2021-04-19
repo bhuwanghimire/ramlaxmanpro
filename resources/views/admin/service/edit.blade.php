@@ -24,17 +24,19 @@
               </textarea>
           </div>
         
+         
           <div class="form-group">
-            <label for=""> Icon</label>
+            <label for="exampleInputFile"> Icon</label>
             <div class="input-group">
               <div class="custom-file">
-                <input type="text" class="form-control" name="icon" id="" value="{{$service->icon}}">
+                <input type="file" class="custom-file-input" id="" name="icon">
+                <label class="custom-file-label" for="exampleInputFile"> Image for icon</label>
               </div>
              
               <div class="input-group-append">
               
               </div>
-            </div> @error('icon')
+            </div> @error('logo')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>

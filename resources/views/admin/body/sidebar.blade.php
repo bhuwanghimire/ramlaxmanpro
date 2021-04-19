@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Ramlaxman</span>
     </a>
 
     <!-- Sidebar -->
@@ -42,7 +42,7 @@
        
           <li class="nav-item">
             <a href="{{route('slider.index')}} " class="nav-link {{Request::is('*slider*') ? 'active': ''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-chart-pie" style="color:green"></i>
               <p>
                 Slider
               
@@ -53,7 +53,7 @@
 
           <li class="nav-item">
             <a href="{{route('about.index')}} " class="nav-link {{Request::is('*about*') ? 'active': ''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="fas fa-address-card" style="color:rgb(231, 14, 104)"></i>
               <p>
                 About
               
@@ -64,7 +64,7 @@
 
           <li class="nav-item">
             <a href="{{route('service.index')}} " class="nav-link {{Request::is('*service*') ? 'active': ''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="fab fa-servicestack" style="color:rgb(148, 14, 238)"></i>
               <p>
                 Service
               
@@ -75,7 +75,7 @@
 
           <li class="nav-item">
             <a href="{{route('category.index')}} " class="nav-link {{Request::is('*category*') ? 'active': ''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="fas fa-certificate" style="color:rgb(228, 13, 85)"></i>
               <p>
                 Category
               
@@ -86,7 +86,7 @@
 
           <li class="nav-item">
             <a href="{{route('portfolio.index')}} " class="nav-link {{Request::is('*portfolio*') ? 'active': ''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="fas fa-passport" style="color:rgb(201, 235, 12)"></i>
               <p>
                 Portfolio
               
@@ -97,7 +97,7 @@
        
           <li class="nav-item">
             <a href="{{route('profile.index')}} " class="nav-link {{Request::is('*profile*') ? 'active': ''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="fas fa-users" style="color:rgb(8, 107, 236)"></i>
               <p>
                 Profile
               
@@ -108,10 +108,31 @@
 
           <li class="nav-item">
             <a href="{{route('client.index')}} " class="nav-link {{Request::is('*client*') ? 'active': ''}}">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
+              <i class="fas fa-sliders-h" style="color:green"></i>              <p>
                 Clients
-              
+                
+              </p>
+            </a>
+           
+          </li>
+
+          
+          <li class="nav-item">
+            <a href="{{route('testimonial.index')}} " class="nav-link {{Request::is('*testimonial*') ? 'active': ''}}">
+              <i class="fas fa-comment" style="color:rgb(236, 23, 76)"></i>              <p>
+                
+                Testimonial
+              </p>
+            </a>
+           
+          </li>
+            
+          <li class="nav-item">
+            <a href="{{route('team.index')}} " class="nav-link {{Request::is('*team*') ? 'active': ''}}">
+              <i class="fas fa-user-friends" style="color:rgb(70, 0, 128)"></i>
+              <p>
+                
+                Team
               </p>
             </a>
            

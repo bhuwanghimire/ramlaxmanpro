@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,10 @@ use App\Http\Controllers\Admin\ClientController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('');
 
 Auth::routes();
 
@@ -36,3 +39,15 @@ Route::resource('category', CategoryController::class);
 Route::resource('portfolio', PortfolioController::class);
 Route::resource('profile', ProfileController::class);
 Route::resource('client', ClientController::class);
+Route::resource('testimonial', TestimonialController::class);
+Route::resource('team', TeamController::class);
+
+
+// Contact Page
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contactstore');
+
+
+//portfolio details
+
+Route::get('/portfolio-details/{id} ', [App\Http\Controllers\FrontendController::class, 'portfolio_details'])->name('portfolio_details');
