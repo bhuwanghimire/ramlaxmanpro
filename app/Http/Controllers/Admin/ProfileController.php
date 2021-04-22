@@ -18,7 +18,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::all();
+         $profiles = Profile::all();
+        
+        // return response()->json($profiles);
         return view('admin.profile.index',compact('profiles'));
     }
 

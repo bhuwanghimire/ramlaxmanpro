@@ -31,10 +31,10 @@
         <tr>
           <td>{{$about->id}}</td>
           <td>{{$about->title}}</td>
-          <td>{{$about->description}}</td>
+          <td>{!!$about->description!!}</td>
          
           <td> <img src="{{ asset($about->image) }}" style="height:40px; width:70px;" > </td>
-       <td style="padding-left:12px;">  <a href="{{route('about.edit',$about->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
+       <td style="padding-left:12px;">  <a href="{{route('about.edit',$about->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto "><i class="fas fa-edit "></i></a>
        <form action="{{ route('about.destroy', $about->id) }}" method="post">
         @csrf
       @method('delete')

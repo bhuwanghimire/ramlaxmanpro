@@ -15,7 +15,7 @@
                
           <div class="form-group">
             <label for="exampleInputEmail1">Address</label>
-            <input type="text" class="form-control" name="address" id="" placeholder="Enter address">
+            <input type="text" class="form-control" name="address" id="" required placeholder="Enter address">
             @error('address')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -23,7 +23,7 @@
 
           <div class="form-group">
             <label for="exampleInputEmail1">Phone</label>
-            <input type="number" class="form-control" name="phone" id="" placeholder="Enter Phone">
+            <input type="number" class="form-control" name="phone" id="" required placeholder="Enter Phone">
             @error('phone')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -31,7 +31,7 @@
 
           <div class="form-group">
             <label for="exampleInputEmail1">Mail Address</label>
-            <input type="text" class="form-control" name="email" id="" placeholder="Enter email">
+            <input type="text" class="form-control" name="email" id="" required placeholder="Enter email">
             @error('email')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -39,7 +39,7 @@
 
           <div class="form-group">
             <label for="exampleInputEmail1">Facebook Link</label>
-            <input type="url" required class="form-control" name="fb_link" id="" placeholder="Enter Facebook Link">
+            <input type="url" required class="form-control" name="fb_link" required id="" placeholder="Enter Facebook Link">
             @error('fb_link')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -47,7 +47,7 @@
 
           <div class="form-group">
             <label for="">Map Address</label>
-            <textarea id="summernote" class="form-control" rows="5" cols="100" name="map_address">
+            <textarea id="summernote" class="form-control" rows="5" required cols="100" name="map_address">
              
               </textarea>
               @error('map_address')
@@ -59,7 +59,7 @@
             <label for="exampleInputFile"> Logo</label>
             <div class="input-group">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="" name="logo">
+                <input type="file" class="custom-file-input" id="" required name="logo">
                 <label class="custom-file-label" for="exampleInputFile">Choose Logo</label>
               </div>
              

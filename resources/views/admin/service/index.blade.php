@@ -31,7 +31,7 @@
         <tr>
           <td>{{$service->id}}</td>
           <td>{{$service->title}}</td>
-          <td>{{$service->description}}</td>
+          <td>{!!$service->description!!}</td>
          
           <td> <img src="{{ asset($service->icon) }}" style="height:40px; width:70px;" > </td>
        <td style="padding-left:12px;">  <a href="{{route('service.edit',$service->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>

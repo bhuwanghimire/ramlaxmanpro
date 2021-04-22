@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\Aboutus;
 use App\Models\Team;
 use App\Models\Testimonial;
+use App\Models\Service;
 
 use Illuminate\Support\Facades\View;
 use DB;
@@ -34,10 +35,12 @@ class AppServiceProvider extends ServiceProvider
         $teams = Team::all();
         $testimonial = Testimonial::all();
         $profile=DB::table('profiles')->get();
+        $service = Service::all();
       
         View::share('profiles', $profile);
         View::share('aboutus', $aboutus);
         View::share('teams', $teams);
         View::share('testimonials', $testimonial);
+        View::share('services', $service);
     }
 }

@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\TeamController;
 // });
 Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('');
 
+// Auth::routes(['register'=>false]);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

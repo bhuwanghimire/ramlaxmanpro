@@ -3,6 +3,11 @@
 
 <head>
 @include('layouts.style')
+
+<style>
+
+
+</style>
 </head>
 
 <body>
@@ -63,8 +68,18 @@
           @foreach ($aboutus as $about)
               
         
-          <div class="col-lg-6" data-aos="fade-right">
-            <img src="{{ asset($about->image) }}" class="img-fluid" >
+          <div class="col-lg-6 shadow p-3 mb-5 bg-white rounded" data-aos="fade-right">
+          {{-- imge effect --}}
+       
+			
+            <img src="{{ asset($about->image) }}" class="img-fluid" class=""   alt="img06"/>
+					
+					
+
+
+         
+          {{-- end image effect --}}
+         
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
             <h3>    {!!$about->title!!}</h3>
