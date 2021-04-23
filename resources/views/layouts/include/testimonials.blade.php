@@ -44,7 +44,7 @@
             @foreach ($testimonials as $testimonial)
           <div class="col-lg-6" data-aos="fade-up">
             <div class="testimonial-item">
-              <img src="{{asset($testimonial->image)}}" class="testimonial-img" alt="">
+              <img src="{{asset($testimonial->image)}}" class="testimonial-img" alt="" style="height:100px;width:100px;">
               <h3>{{$testimonial->name}}</h3>
               <h4>{{$testimonial->designation}}</h4>
               <p>

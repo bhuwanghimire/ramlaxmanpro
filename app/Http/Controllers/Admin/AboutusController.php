@@ -101,6 +101,7 @@ class AboutusController extends Controller
         if ( $image) {
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(1920,1088)->save('image/aboutus/'.$name_gen);
+            unlink($about->image);
             $last_img = 'image/aboutus/'.$name_gen;
             $about->image =  $last_img;
             $about->save();
@@ -127,7 +128,7 @@ class AboutusController extends Controller
         
         $about = Aboutus::find($id);
      
-
+        unlink($about->image);
         $about->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();

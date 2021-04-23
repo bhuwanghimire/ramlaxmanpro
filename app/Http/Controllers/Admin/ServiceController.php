@@ -103,6 +103,7 @@ class ServiceController extends Controller
         if ( $services) {
             $name_gen = hexdec(uniqid()).'.'.$services->getClientOriginalExtension();
             Image::make($services)->resize(1920,1088)->save('image/servicelogo/'.$name_gen);
+            unlink($service->icon);
              $last_img = 'image/servicelogo/'.$name_gen;
             $service->icon =  $last_img;
             $service->save();
@@ -126,6 +127,7 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::find($id);
+        unlink($service->icon);
         $service->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();

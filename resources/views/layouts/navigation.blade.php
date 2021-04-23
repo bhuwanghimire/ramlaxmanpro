@@ -19,8 +19,16 @@
             </ul>
           </li>
 
-      
+        
+    
           <li><a href="{{asset('contact')}}">Contact</a></li>
+          @if(Auth::user())   
+            <li><a href="{{asset('home')}}">Dashboard</a></li>
+            @else
+            <li><a href="{{asset('login')}}">Login</a></li>
+            @endif
+        
+         
 
         </ul>
       </nav><!-- .nav-menu -->

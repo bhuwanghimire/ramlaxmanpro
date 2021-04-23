@@ -95,6 +95,7 @@ class TeamController extends Controller
         if ( $teams) {
             $name_gen = hexdec(uniqid()).'.'.$teams->getClientOriginalExtension();
             Image::make($teams)->resize(255,255)->save('image/team/'.$name_gen);
+            unlink($team->image);
             $last_img = 'image/team/'.$name_gen;
             $team->image =  $last_img;
             $team->save();
@@ -121,6 +122,7 @@ class TeamController extends Controller
     public function destroy($id)
     {
         $team = Team::find($id);
+        unlink($team->image);
         $team->delete();
         toast(' Deleted Successfully','warning');
         return redirect()->back();

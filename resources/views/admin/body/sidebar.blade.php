@@ -13,8 +13,9 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
+          @foreach ($profiles as $profile)
           <img src="{{asset($profile->logo)}}" alt="" srcset="" class=" img-circle elevation-2 img-fluid"  >
-
+          @endforeach
         </div>
         <div class="info">
           <a href="#" class="d-block">Ramlaxman</a>

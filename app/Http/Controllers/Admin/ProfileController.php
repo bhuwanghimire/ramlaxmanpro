@@ -47,8 +47,8 @@ class ProfileController extends Controller
 
         $logos =  $request->file('logo');
         $name_gen = hexdec(uniqid()).'.'.$logos->getClientOriginalExtension();
-         Image::make($logos)->resize(1920,1088)->save('image/logo/'.$name_gen);
-        $last_img = 'image/logo/'.$name_gen;
+         Image::make($logos)->resize(1920,1088)->save('image/profile/'.$name_gen);
+        $last_img = 'image/profile/'.$name_gen;
 
         
         Profile::insert([
@@ -102,8 +102,9 @@ class ProfileController extends Controller
         $profiles =  $request->file('logo');
         if ( $profiles) {
             $name_gen = hexdec(uniqid()).'.'.$profiles->getClientOriginalExtension();
-            Image::make($profiles)->resize(1920,1088)->save('image/logo/'.$name_gen);
-            $last_img = 'image/logo/'.$name_gen;
+            Image::make($profiles)->resize(1920,1088)->save('image/profile/'.$name_gen);
+            unlink($profile->logo);
+            $last_img = 'image/profile/'.$name_gen;
             $profile->logo =  $last_img;
             $profile->save();
         }
@@ -128,6 +129,7 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         $profile = Profile::find($id);
+        unlink($profile->logo);
         $profile->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();

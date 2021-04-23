@@ -99,6 +99,7 @@ class ClientController extends Controller
         if ( $client_image) {
             $name_gen = hexdec(uniqid()).'.'.$client_image->getClientOriginalExtension();
             Image::make($client_image)->resize(1920,1088)->save('image/clientlogo/'.$name_gen);
+            unlink($client->client_logo);
             $last_img = 'image/clientlogo/'.$name_gen;
             $client->client_logo =  $last_img;
             $client->save();
@@ -123,6 +124,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::find($id);
+        unlink($client->client_logo);
         $client->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();

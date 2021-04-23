@@ -94,6 +94,7 @@ class TestimonialController extends Controller
         if ( $testimonial) {
             $name_gen = hexdec(uniqid()).'.'.$testimonial->getClientOriginalExtension();
             Image::make($testimonial)->resize(1920,1088)->save('image/testimonial/'.$name_gen);
+            unlink($find_id->image);
             $last_img = 'image/testimonial/'.$name_gen;
             $find_id->image =  $last_img;
             $find_id->save();
@@ -119,6 +120,7 @@ class TestimonialController extends Controller
     public function destroy($id)
     {
         $testimonial = Testimonial::find($id);
+        unlink($testimonial->image);
         $testimonial->delete();
         toast(' Deleted Successfully','warning');
         return redirect()->back();

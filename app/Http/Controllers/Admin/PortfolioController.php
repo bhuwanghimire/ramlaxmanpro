@@ -106,6 +106,7 @@ class PortfolioController extends Controller
         if ( $portfolio) {
             $name_gen = hexdec(uniqid()).'.'.$portfolio->getClientOriginalExtension();
             Image::make($portfolio)->resize(1920,1088)->save('image/portfolio/'.$name_gen);
+            unlink($portfolios->image);
             $last_img = 'image/portfolio/'.$name_gen;
             $portfolios->image =  $last_img;
             $portfolios->save();
@@ -134,6 +135,10 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $portfolio = Portfolio::find($id);
+        unlink($portfolio->image);
+        $portfolio->delete();
+        toast('Deleted Successfully','warning');
+        return redirect()->back();
     }
 }

@@ -105,6 +105,7 @@ class SliderController extends Controller
         if ( $slider_image) {
             $name_gen = hexdec(uniqid()).'.'.$slider_image->getClientOriginalExtension();
             Image::make($slider_image)->resize(1920,1088)->save('image/slider/'.$name_gen);
+            unlink($slider->slider_image);
             $last_img = 'image/slider/'.$name_gen;
             $slider->slider_image =  $last_img;
             $slider->save();
@@ -130,6 +131,7 @@ class SliderController extends Controller
     {
         
         $slider = Slider::find($id);
+        unlink($slider->slider_image);
         $slider->delete();
         toast('Slider Deleted Successfully','warning');
         return redirect()->back();
