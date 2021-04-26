@@ -21,7 +21,8 @@ class CreatePortfoliosTable extends Migration
             $table->date('date');
             $table->string('link');
             $table->longtext('description');
-            $table->string('category_id');
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

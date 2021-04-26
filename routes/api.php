@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Api\AboutusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('pp', [ProfileController::class,'index']);
+Route::resource('about', AboutusController::class);
+// Route::put('/about',[Api\AboutusController::class,'update']);

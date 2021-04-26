@@ -34,12 +34,14 @@
           <td>{!! $slider->description !!}</td>
          
           <td> <img src="{{ asset($slider->slider_image) }}" style="height:40px; width:70px;" > </td>
-       <td style="padding-left:12px;">  <a href="{{route('slider.edit',$slider->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
-       <form action="{{ route('slider.destroy', $slider->id) }}" method="post">
-        @csrf
-      @method('delete')
-        <button type="submit" class="text-danger"><i class="fas fa-trash"></i></button>
-       </form></td>
+       <td style="padding-left:12px;">  <a href="{{route('slider.edit',$slider->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto">
+            <i class="fas fa-edit"></i></a>
+            <form action="{{ route('slider.destroy', $slider->id) }}" method="post">
+              @csrf
+            @method('delete')
+              <button type="submit" class="text-danger"><i class="fas fa-trash"></i></button>
+            </form>
+      </td>
         </tr>
         @endforeach
       </table>

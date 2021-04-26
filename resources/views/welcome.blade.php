@@ -151,8 +151,11 @@
             <ul id="portfolio-flters">
             
               <li data-filter="*" class="filter-active">All</li>  
+             
               @foreach ($portfolios as $portfolio)
+            
               <li data-filter=".{{$portfolio->category->category}}"> {{$portfolio->category->category}}</li>
+               
               @endforeach
             </ul>
          
@@ -162,6 +165,7 @@
         <div class="row portfolio-container" data-aos="fade-up">
          
           @foreach ($portfolios as $portfolio)
+          
           <div class="col-lg-4 col-md-6 portfolio-item {{$portfolio->category->category}}">
             <img src="{{ asset($portfolio->image) }}" class="img-fluid" >
         

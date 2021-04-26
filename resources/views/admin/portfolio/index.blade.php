@@ -29,8 +29,11 @@
         </thead>
        
             
-       
+    
         <tbody>
+        
+           
+         
             @foreach ($portfolios as $portfolio)
         <tr>
           <td>{{$portfolio->id}}</td>
@@ -49,14 +52,28 @@
          
           <td> <img src="{{ asset($portfolio->image) }}" style="height:40px; width:70px;" > </td>
        <td style="padding-left:12px;">  <a href="{{route('portfolio.edit',$portfolio->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
+     
+      
+      
        <form action="{{ route('portfolio.destroy', $portfolio->id) }}" method="post">
         @csrf
       @method('delete')
+   
+      @if($portfolio->category->id == $portfolio->category_id)
+      <p>Cannot Be Deleted Because of foreign key exists</p>  
+        @else
         <button type="submit" class="text-danger"><i class="fas fa-trash"></i></button>
-       </form></td>
+        @endif
+      
+      
+      
+     
+      
+       </form> </td>
         </tr>
-        @endforeach
-      </table>
+      </tbody>
+       @endforeach  
+      </table> 
     </div>
     <!-- /.card-body -->
   </div>

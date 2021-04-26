@@ -26,17 +26,29 @@
        
         <tbody>
             @foreach ($categories as $category)
+         
         <tr>
+        
           <td>{{$category->id}}</td>
-          <td>{{$category->category}}</td>            
+          <td>{{$category->category}}</td>    
+       
          <td style="padding-left:12px;">  <a href="{{route('category.edit',$category->id)}}" class="btn btn-sm  bg-gradient-primary mr-auto"><i class="fas fa-edit"></i></a>
+       
+            
+         
        <form action="{{ route('category.destroy', $category->id) }}" method="post">
         @csrf
       @method('delete')
+      
+     
+    
+     
         <button type="submit" class="text-danger"><i class="fas fa-trash"></i></button>
-       </form></td>
+      
+       </form> </td>
         </tr>
         @endforeach
+   
       </table>
     </div>
     <!-- /.card-body -->

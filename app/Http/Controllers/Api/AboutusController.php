@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Image;
 use Illuminate\Support\Carbon;
-use App\Models\Category;
-use App\Models\Portfolio;
+use App\Models\Aboutus;
 Use Alert;
 
-class CategoryController extends Controller
+class AboutusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $portfolios = Portfolio::all();
-        $categories = Category::all();
-        return view('admin.category.index',compact('categories','portfolios'));
+    {
+        return $abouts = Aboutus::all();
     }
 
     /**
@@ -29,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        //
     }
 
     /**
@@ -40,17 +39,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'category' => 'required',
-        ]);
-
-        
-        Category::insert([
-            'category' => $request->category,   
+         
+      $store =   Aboutus::insert([
+            
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => 'image',
             'created_at' => Carbon::now()
         ]);
-        toast(' Inserted Successfully','success');
-        return redirect()->route('category.index');
+       if ($store) {
+           return "Created Successfully";
+       }else{
+           return "not success";
+       }
     }
 
     /**
@@ -72,8 +73,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.category.edit',compact('category'));
+       
+       
     }
 
     /**
@@ -85,15 +86,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
-      
-        $category->category = $request->category;
-       
-        $category->save();
-            
-    
-        toast('Service Updated Successfully','success');
-        return redirect()->route('category.index');
+        $about = Aboutus::find($id);
+        $about->title = $request->title;
+        $about->description = $request->description ;
+        
+        $store =  $about->save();
+
+       if ($store) {
+        return "Created Successfully";
+        }else{
+        return "not success";
+    }
     }
 
     /**
@@ -104,9 +107,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        toast('Deleted Successfully','warning');
-        return redirect()->back();
+        //
     }
 }
