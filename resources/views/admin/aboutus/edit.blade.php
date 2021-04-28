@@ -17,12 +17,21 @@
             <input type="text" class="form-control" name="title" id="" value="{{$abouts->title}}">
           </div>
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="">Content</label>
             <textarea id="summernote" class="form-control" rows="5" cols="100" name="description">
                 {{$abouts->description}}
               </textarea>
+          </div> --}}
+
+          <div class="form-group">
+            <label for="">Description</label>
+            <textarea class="form-control" id="" rows="3" name="description" >   {{$abouts->description}}</textarea>
+            @error('description')
+              <p class="text-danger">{{ $message }}</p>
+              @enderror
           </div>
+
         
           <div class="form-group">
             <label for="exampleInputFile">Image</label>

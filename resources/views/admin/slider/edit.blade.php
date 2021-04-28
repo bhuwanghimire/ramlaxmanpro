@@ -16,13 +16,20 @@
             <label for="exampleInputEmail1">Title</label>
             <input type="text" class="form-control" name="title" id="" value="{{$sliders->title}}">
           </div>
-
+          
           <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" >    {{$sliders->description}}</textarea>
+            @error('description')
+              <p class="text-danger">{{ $message }}</p>
+              @enderror
+          </div>
+          {{-- <div class="form-group">
             <label for="">Content</label>
             <textarea id="summernote" class="form-control" rows="5" cols="100" name="description">
                 {{$sliders->description}}
               </textarea>
-          </div>
+          </div> --}}
         
           <div class="form-group">
             <label for="exampleInputFile">Slider Image</label>

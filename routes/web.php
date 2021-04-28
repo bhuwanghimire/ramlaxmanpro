@@ -46,7 +46,7 @@ Route::resource('team', TeamController::class);
 
 // Contact Page
 Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
-Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contactstore');
+// Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contactstore');
 
 
 //portfolio details

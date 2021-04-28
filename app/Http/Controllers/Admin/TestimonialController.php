@@ -40,6 +40,13 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required',
+            'designation' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+           
+        ]);
         $testimonial =  $request->file('image');
         $name_gen = hexdec(uniqid()).'.'.$testimonial->getClientOriginalExtension();
          Image::make($testimonial)->resize(1920,1088)->save('image/testimonial/'.$name_gen);

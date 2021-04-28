@@ -33,7 +33,7 @@
 
           <div class="form-group">
             <label for="">Client Link</label>
-            <input type="text" class="form-control" name="client_link" id="" placeholder="Enter Client Link">
+            <input type="text" class="form-control" name="client_link" id="" placeholder="Enter Client Link" value=" {{old('client_link')}}">
           
           </div>
         </div>

@@ -15,7 +15,7 @@
                
           <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
-            <input type="text" class="form-control" name="title" id="" placeholder="Enter title">
+            <input type="text" class="form-control" name="title" id="" placeholder="Enter title"  value="{{old('title')}}">
             @error('title')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -24,7 +24,7 @@
           <div class="form-group">
             <label for="">Content</label>
             <textarea id="summernote" class="form-control" rows="5" cols="100" name="description">
-             
+             {{old('description')}}
               </textarea>
               @error('description')
               <p class="text-danger">{{ $message }}</p>

@@ -9,19 +9,21 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="{{asset('/')}}">Home</a></li>
-          
-          <li class="drop-down"><a href="">About</a>
+          <li class="{{Request::is('*/*') ? 'active': ''}}"><a href="{{asset('/')}}">Home</a></li>
+          <li  class="{{Request::is('*aboutus_details*') ? 'active': ''}}"><a href="{{asset('aboutus_details')}}">About Us</a></li>
+          <li class="{{Request::is('*team_details*') ? 'active': ''}}"><a href="{{asset('team_details')}}" >Team</a></li>
+          <li class="{{Request::is('*testimonials*') ? 'active': ''}}"><a href="{{asset('testimonials')}}">Testimonials</a></li> 
+          {{-- <li class="drop-down"><a href="">About</a>
             <ul>
               <li><a href="{{asset('aboutus_details')}}">About Us</a></li>
               <li><a href="{{asset('team_details')}}">Team</a></li>
               <li><a href="{{asset('testimonials')}}">Testimonials</a></li>           
             </ul>
-          </li>
+          </li> --}}
 
         
     
-          <li><a href="{{asset('contact')}}">Contact</a></li>
+          <li class="{{Request::is('*contact*') ? 'active': ''}}"><a href="{{asset('contact')}} ">Contact</a></li>
           @if(Auth::user())   
             <li><a href="{{asset('home')}}">Dashboard</a></li>
             @else

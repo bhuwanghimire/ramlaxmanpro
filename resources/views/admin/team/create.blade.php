@@ -15,7 +15,7 @@
                
           <div class="form-group">
             <label for="exampleInputEmail1">Name</label>
-            <input type="text" class="form-control" name="name" id="" placeholder="Enter name">
+            <input type="text" class="form-control" name="name" id="" required placeholder="Enter name" value="{{old('name')}}">
             @error('name')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -23,7 +23,7 @@
 
           <div class="form-group">
             <label for="exampleInputEmail1">Designation</label>
-            <input type="text" class="form-control" name="designation" id="" placeholder="Enter Designation">
+            <input type="text" class="form-control" name="designation" id="" placeholder="Enter Designation" value="{{old('designation')}}">
             @error('designation')
             <p class="text-danger">{{ $message }}</p>
             @enderror
@@ -34,7 +34,7 @@
             <label for="exampleInputFile"> Image</label>
             <div class="input-group">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="" name="image">
+                <input type="file" class="custom-file-input" id="" required name="image">
                 <label class="custom-file-label" for="exampleInputFile">Choose image</label>
               </div>
              

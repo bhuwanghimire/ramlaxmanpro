@@ -29,8 +29,8 @@
           <div class="carousel-container">
             <div class="carousel-content animate__animated animate__fadeInUp">
               <h2>{{$slider->title}}</span></h2>
-              <p>{!!$slider->description!!}</p>
-              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+              <p style="text-align: justify;">{!!$slider->description!!}</p>
+              {{-- <div class="text-center"><a href="" class="btn-get-started">Read More</a></div> --}}
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
           {{-- imge effect --}}
        
 			
-            <img src="{{ asset($about->image) }}" class="img-fluid" class=""   alt="img06"/>
+            <img src="{{ asset($about->image) }}"  class="" height="450px" width="540px"   alt="img06"/>
 					
 					
 
@@ -83,7 +83,7 @@
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
             <h3>    {!!$about->title!!}</h3>
-            <p>
+            <p style="text-align: justify;">
              {!!$about->description!!}
             </p>
             <ul>

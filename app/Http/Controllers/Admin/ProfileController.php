@@ -44,7 +44,14 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
        
-
+        $validated = $request->validate([
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'fb_link' => 'required',
+            'map_address' => 'required',
+            'logo' => 'required',
+        ]);
         $logos =  $request->file('logo');
         $name_gen = hexdec(uniqid()).'.'.$logos->getClientOriginalExtension();
          Image::make($logos)->resize(1920,1088)->save('image/profile/'.$name_gen);

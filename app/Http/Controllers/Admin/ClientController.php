@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use App\Models\Client;
 Use Alert;
 use Image;
+use Illuminate\Support\Facades\File;
 
 class ClientController extends Controller
 {
@@ -124,7 +125,17 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::find($id);
-        unlink($client->client_logo);
+
+        $old_image = $client->client_logo;
+        $result = File::exists($old_image);
+
+        if ( $result ) {
+            unlink($client->client_logo);  
+        }
+
+        
+
+       
         $client->delete();
         toast('Deleted Successfully','warning');
         return redirect()->back();

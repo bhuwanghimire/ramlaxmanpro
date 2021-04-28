@@ -15,7 +15,7 @@
                
           <div class="form-group">
             <label for="">Category</label>
-            <input type="text" class="form-control" name="category" id="" placeholder="Enter category">
+            <input type="text" class="form-control" name="category" id="" value=" {{old('category')}}" placeholder="Enter category" >
             @error('category')
             <p class="text-danger">{{ $message }}</p>
             @enderror

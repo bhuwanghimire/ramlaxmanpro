@@ -15,27 +15,35 @@
                
           <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
-            <input type="text" class="form-control" name="title" id="" placeholder="Enter title">
+            <input type="text" class="form-control" name="title" id="" value=" {{old('title')}}" placeholder="Enter title">
             @error('title')
             <p class="text-danger">{{ $message }}</p>
             @enderror
           </div>
 
           <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" > {{old('description')}}</textarea>
+            @error('description')
+              <p class="text-danger">{{ $message }}</p>
+              @enderror
+          </div>
+
+          {{-- <div class="form-group">
             <label for="">Content</label>
             <textarea id="summernote" class="form-control" rows="5" cols="100" name="description">
-             
+              {{old('description')}}
               </textarea>
               @error('description')
               <p class="text-danger">{{ $message }}</p>
               @enderror
-          </div>
+          </div> --}}
         
           <div class="form-group">
             <label for="exampleInputFile">Slider Image</label>
             <div class="input-group">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="" name="slider_image">
+                <input type="file" class="custom-file-input" id=""  name="slider_image">
                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
               </div>
              
